@@ -1,11 +1,11 @@
-from StringIO import StringIO
+# from StringIO import StringIO
 
 from flask import Blueprint, render_template, flash
 from flask.ext.wtf import Form
 from wtforms import StringField, TextAreaField
 from wtforms.validators import DataRequired
 
-import requests
+# import requests
 from astropy.io import fits
 
 from scrape import extract_image_metadata
