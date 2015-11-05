@@ -29,7 +29,7 @@ def new():
             if response.status_code != 200:
                 continue
             header = fits.getheader(StringIO(response.content))
-            metadata = extract_image_metadata(header)
+            metadata = extract_image_metadata(header, image_url=url)
             add_image(metadata)
         return 'Tried to upload these URLs:<br/>' + '<br/>'.join(url_list)
         # return redirect('/index')
