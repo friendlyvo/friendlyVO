@@ -9,3 +9,4 @@ astropy==1.1b1
 Flask-WTF==0.12
 WTForms==2.0.2
 requests==2.8.1
+-e git+https://github.com/spacetelescope/sphere.git#egg=sphere
