@@ -49,5 +49,5 @@ class ImageMetadata:
         return ImageMetadata(title=m['title'], ra_center=m['ra_center'], dec_center=m['dec_center'], naxes=m['naxes'], naxis=m['naxis'], scale=m['scale'], format=m['format'], image_url=m['image_url'], instrument=m.get('instrument', None), description=m.get('description', None), mjd=m.get('mjd', None), reference_frame=m.get('reference_frame', None), projection=m.get('projection', None), crpix=m.get('crpix', None), crval=m.get('crval', None), cd_matrix=m.get('cd_matrix', None), preview_url=m.get('preview_url', None), fov_s=m.get('fov_s', None), pub_ref=m.get('pub_ref', None), author=m.get('author', None))
 
     def as_array(self):
-        return [self.title, self.ra_center, self.dec_center, self.naxes, str(self.naxis), self.scale, self.format, self.image_url, self.instrument, self.description, self.mjd, self.reference_frame, self.projection, str(self.crpix), str(self.crval), str(self.cd_matrix), self.preview_url, self.fov_s, self.pub_ref, self.author]
+        return [self.title, self.ra_center, self.dec_center, self.naxes, str(self.naxis), str(self.scale), self.format, self.image_url, self.instrument, self.description, self.mjd, self.reference_frame, self.projection, str(self.crpix), str(self.crval), str(self.cd_matrix), self.preview_url, self.fov_s, self.pub_ref, self.author]
 
