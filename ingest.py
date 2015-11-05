@@ -1,6 +1,9 @@
 from flask import Blueprint, request
 import json
 
+from utils import ImageMetadata
+import db
+
 ingest = Blueprint('ingest', __name__)
 
 def success_tpl(message=''):
@@ -9,7 +12,6 @@ def success_tpl(message=''):
 def error_tpl(message=''):
     return {'status': 'error', 'message': message}
 
-COMPULSORY_KEYS = ('title', 'ra_center', 'dec_center', 'naxes', 'naxis', 'scale', 'format', 'image_url')
 
 @ingest.route('/ingest', methods=['GET', 'POST'])
 def lets_ingest():
@@ -20,20 +22,14 @@ def lets_ingest():
         return s
 
     try:
-        metadata_new_img = json.loads(request.data)
+        metadata_dict = json.loads(request.data)
     except:
         return json.dumps(error_tpl(message='POSTed data does not look like JSON'))
 
-    # convert keys to lowercase
-    metadata_new_img = dict((k.lower(), v) for k,v in metadata_new_img.iteritems())
-    m = metadata_new_img
+    try:
+        img_metadata = ImageMetadata.from_dict(metadata_dict)
+    except:
+        return json.dumps(error_tpl(message='A key is missing'))
 
-    # check if we have compulsory keys
-    for key in COMPULSORY_KEYS:
-        if key not in m:
-            return json.dumps(error_tpl(message='Key %s missing' % (key)))
-
-    #return success_tpl(message='Image %s ingested!' % (m['image_url']))
-    return 'HELLO'
-
-
+    db.add_image(img_metadata)
+    return json.dumps(success_tpl(message='Image %s ingested!' % (img_metadata.image_url)))

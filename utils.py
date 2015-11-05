@@ -2,7 +2,8 @@
 class ImageMetadata:
 
     COMPULSORY_KEYS = ('title', 'ra_center', 'dec_center', 'naxes', 'naxis', 'scale', 'format', 'image_url')
-    #COMPULSORY_KEYS_TYPES = ('a', 'ra_center', 'dec_center', 'naxes', 'naxis', 'scale', 'format', 'image_url')
+    
+    COMPULSORY_KEYS_TYPES = ('S500', float, float, int, 'S500', float, 'S500', 'S500')
 
     def __init__(self, title=None, ra_center=None, dec_center=None, naxes=None, naxis=None, scale=None, format=None, image_url=None):
         self.title = title
@@ -32,5 +33,5 @@ class ImageMetadata:
         return ImageMetadata(title=m['title'], ra_center=m['ra_center'], dec_center=m['dec_center'], naxes=m['naxes'], naxis=m['naxis'], scale=m['scale'], format=m['format'], image_url=m['image_url'])
 
     def as_array(self):
-        return [self.title, self.ra_center, self.dec_center, self.naxes, self.naxis, self.scale, self.format, self.image_url]
+        return [self.title, self.ra_center, self.dec_center, self.naxes, str(self.naxis), self.scale, self.format, self.image_url]
 
