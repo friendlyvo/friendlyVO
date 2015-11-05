@@ -1,5 +1,7 @@
-<html>
+<!doctype html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
     {% if title %}
     <title>{{ title }} - FriendlyVO</title>
     {% else %}
@@ -7,7 +9,11 @@
     {% endif %}
   </head>
   <body>
-      <div style="text-align:center"><a href="/"><img src="static/friendlyVO.png" alt="friendlyVO" style="margin:0 auto;"  /></a></div>
-      <p>{{page_content}}</p>
+   <header style="text-align:center">
+      <a href="/"><img src="static/friendlyVO.png" alt="friendlyVO" style="margin:0 auto;"  /></a>
+   </header>
+   <article>
+      {{page_content}}
+   </article>
   </body>
 </html>
