@@ -1,0 +1,3 @@
+title,ra_center,dec_center,naxes,naxis,scale,format,image_url
+test,11.2,-34.81,2,"[500, 500]",0.1,image/fits,http://myserver/myimages/M1.fits
+test,11.2,-34.81,2,"[500, 500]",0.1,image/fits,http://myserver/myimages/M1.fits

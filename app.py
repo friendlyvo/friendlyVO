@@ -12,7 +12,9 @@ app.config.from_object('config')
 
 @app.route('/')
 def hello():
-    return 'Hello World! I can deploy automatically :)'
+    page_content = 'Hello World! I can deploy automatically :)'
+    return render_template('index.html',
+                           page_content = page_content)
 
 @app.route('/test')
 def test():
@@ -20,7 +22,6 @@ def test():
     page_content = 'Yo, I got the stuff working.'
     return render_template('index.html', 
 			   title = 'test page',
-			   page_title = page_title,
  			   page_content = page_content)
 
 app.register_blueprint(query, url_prefix='/query')
