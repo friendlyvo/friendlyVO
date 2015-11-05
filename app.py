@@ -12,7 +12,7 @@ app.config.from_object('config')
 
 @app.route('/')
 def hello():
-    page_content = render_template('frontpage.html')
+    page_content = 'Hello World! I can deploy automatically :)'
     return render_template('index.html',
                            page_content = page_content)
 
