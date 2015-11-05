@@ -17,14 +17,6 @@ def hello():
 def page_stuff():
     return Markup(render_template('frontpage.html'))
 
-@app.route('/test')
-def test():
-    page_title = 'the Friendly VO'
-    page_content = 'Yo, I got the stuff working.'
-    return render_template('index.html', 
-			   title = 'test page',
- 			   page_content = page_content)
-
 app.register_blueprint(query, url_prefix='/query')
 
 app.register_blueprint(ingest, url_prefix='/images')
