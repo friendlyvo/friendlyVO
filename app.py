@@ -15,7 +15,7 @@ def hello():
     return render_template('index.html',
                            page_content = page_stuff())
 def page_stuff():
-    return render_template('frontpage.html')
+    return Markup(render_template('frontpage.html'))
 
 @app.route('/test')
 def test():
