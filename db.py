@@ -19,7 +19,7 @@ def add_image(img_metadata):
 
     try:
         if not os.path.exists(CSV_PATH):
-            table = Table(dtype=ImageMetadata.COMPULSORY_KEYS_TYPES, names=ImageMetadata.COMPULSORY_KEYS)
+            table = Table(dtype=ImageMetadata.COMPULSORY_KEYS_TYPES + ImageMetadata.OTHER_KEYS_TYPES, names=ImageMetadata.COMPULSORY_KEYS + ImageMetadata.OTHER_KEYS)
         else:
             table = ascii.read(CSV_PATH, format='csv')
 
