@@ -34,7 +34,7 @@ def new():
             result_list.append(metadata)
         return 'Tried to upload these URLs:<br/>' + '<br/>'.join(
             ['RA: {} Dec: {} url: {}'.format(
-                meta.ra_centre, meta.dec_centre, meta.image_url)
+                meta.ra_center, meta.dec_center, meta.image_url)
              for meta in result_list])
         # return redirect('/index')
     return render_template('new.html', title='Add new data', form=form)

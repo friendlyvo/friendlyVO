@@ -6,12 +6,12 @@ from utils import ImageMetadata
 def extract_image_metadata(header, title=None, image_url=None):
     """Return a dictionary of metadata pulled from a fits header."""
     wcs = WCS(header)
-    centre = 0.5*(header['NAXIS1'] - 1), 0.5*(header['NAXIS2'] - 1)
-    centre_wcs = wcs.wcs_pix2world([centre[0]], [centre[1]], 0)
+    center = 0.5*(header['NAXIS1'] - 1), 0.5*(header['NAXIS2'] - 1)
+    center_wcs = wcs.wcs_pix2world([center[0]], [center[1]], 0)
     metadata = ImageMetadata(
         title=title,
-        ra_center=centre_wcs[0][0],
-        dec_center=centre_wcs[0][1],
+        ra_center=center_wcs[0][0],
+        dec_center=center_wcs[1][0],
         naxes=wcs.naxis,
         naxis=(header['NAXIS1'], header['NAXIS2']),
         scale=proj_plane_pixel_scales(wcs),
