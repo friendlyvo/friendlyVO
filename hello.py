@@ -1,6 +1,9 @@
 import os
 from flask import Flask, request
 
+import astropy
+print astropy.__version__
+
 app = Flask(__name__)
 
 @app.route('/')
