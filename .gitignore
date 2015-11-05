@@ -55,3 +55,21 @@ docs/_build/
 
 # PyBuilder
 target/
+venv/pip-selfcheck.json
+venv/bin/activate
+venv/bin/activate.csh
+venv/bin/activate.fish
+venv/bin/activate_this.py
+venv/bin/easy_install
+venv/bin/easy_install-2.7
+venv/bin/gunicorn
+venv/bin/gunicorn_django
+venv/bin/gunicorn_paster
+venv/bin/pip
+venv/bin/pip2
+venv/bin/pip2.7
+venv/bin/python
+venv/bin/python2
+venv/bin/python2.7
+venv/bin/wheel
+venv/include/python2.7
