@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <h1>Add new data</h1>
+  <form action="" method="post" name="login">
+      {{ form.hidden_tag() }}
+      <p>
+          Your name:<br/>
+          {{ form.user_name(size=80) }}<br/>
+      </p>
+      <p>
+          Dataset name:<br/>
+          {{ form.dataset_name(size=80) }}<br/>
+      </p>
+      <p>
+          Description:<br/>
+          {{ form.description(size=80) }}<br/>
+      </p>
+      <p>
+          List of image URLs:<br/>
+          {{ form.url_list(rows=10, cols=80) }}<br/>
+      </p>
+      <p><input type="submit" value="Add data"></p>
+  </form>
+{% endblock %}
