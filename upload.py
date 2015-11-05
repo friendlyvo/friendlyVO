@@ -24,13 +24,18 @@ def new():
     form = NewForm()
     if form.validate_on_submit():
         url_list = form.url_list.data.split('\n')
+        result_list = []
         for url in url_list:
-            response = requests.get(url)
-            if response.status_code != 200:
-                continue
-            header = fits.getheader(StringIO(response.content))
+            # response = requests.get(url)
+            # if response.status_code != 200:
+            #     continue
+            header = fits.getheader(url)
             metadata = extract_image_metadata(header, image_url=url)
             add_image(metadata)
-        return 'Tried to upload these URLs:<br/>' + '<br/>'.join(url_list)
+            result_list.append(metadata)
+        return 'Tried to upload these URLs:<br/>' + '<br/>'.join(
+            ['RA: {} Dec: {} url: {}'.format(
+                meta.ra_centre, meta.dec_centre, meta.image_url)
+             for meta in result_list])
         # return redirect('/index')
     return render_template('new.html', title='Add new data', form=form)
