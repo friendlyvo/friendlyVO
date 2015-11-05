@@ -3,7 +3,7 @@ class ImageMetadata:
 
     COMPULSORY_KEYS = ('title', 'ra_center', 'dec_center', 'naxes', 'naxis', 'scale', 'format', 'image_url')
     
-    COMPULSORY_KEYS_TYPES = ('S500', float, float, int, 'S500', float, 'S500', 'S500')
+    COMPULSORY_KEYS_TYPES = ('S500', float, float, int, 'S500', 'S500', 'S500', 'S500')
 
     def __init__(self, title=None, ra_center=None, dec_center=None, naxes=None, naxis=None, scale=None, format=None, image_url=None):
         self.title = title

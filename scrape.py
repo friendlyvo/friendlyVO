@@ -13,8 +13,8 @@ def extract_image_metadata(header, title=None, image_url=None):
         ra_center=center_wcs[0][0],
         dec_center=center_wcs[1][0],
         naxes=wcs.naxis,
-        naxis=(header['NAXIS1'], header['NAXIS2']),
-        scale=proj_plane_pixel_scales(wcs),
+        naxis='[{} {}]'.format(header['NAXIS1'], header['NAXIS2']),
+        scale='[{} {}]'.format(*proj_plane_pixel_scales(wcs)),
         format='image/fits',
         image_url=image_url,        
         )
