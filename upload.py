@@ -29,10 +29,12 @@ def new():
         result_list = []
         for url in url_list:
             header = get_remote_header(url)
+            if not header:
+                continue
             metadata = extract_image_metadata(header, image_url=url)
             add_image(metadata)
             result_list.append(metadata)
-        return 'Tried to upload these URLs:<br/>' + '<br/>'.join(
+        return 'Successfully found this data:<br/>' + '<br/>'.join(
             ['RA: {} Dec: {} url: {}'.format(
                 meta.ra_center, meta.dec_center, meta.image_url)
              for meta in result_list])
@@ -42,13 +44,23 @@ def new():
 def get_remote_header(url):
     with contextlib.closing(requests.get(url, stream=True)) as response:
         if response.status_code != 200:
+            print 'Bad status code: {}'.format(response.status_code)
             return None
         header_str = ''
-        for idx, line in enumerate(response.iter_content(chunk_size=80)):
-            if idx == 1000:
+        buff = ''
+        end = False
+        for chunk in response.iter_content(chunk_size=80):
+            if len(header_str) > 80000:
+                print 'Reached 1000 lines!!!'
                 return None
-            header_str = header_str + line
-            if line == 'END' + ' '*77:
+            buff = buff + chunk
+            while len(buff) >= 80:
+                line, buff = buff[:80], buff[80:]
+                header_str = header_str + line
+                if line == 'END' + ' '*77:
+                    end = True
+                    break
+            if end:
                 break
     header = fits.Header.fromstring(header_str)
     return header
