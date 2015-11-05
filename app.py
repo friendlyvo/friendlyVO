@@ -20,7 +20,6 @@ def test():
     page_content = 'Yo, I got the stuff working.'
     return render_template('index.html', 
 			   title = 'test page',
-			   page_title = page_title,
  			   page_content = page_content)
 
 app.register_blueprint(query, url_prefix='/query')
