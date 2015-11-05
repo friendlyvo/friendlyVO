@@ -1,4 +1,5 @@
 from astropy.wcs import WCS
+from astropy.wcs.utils import proj_plane_pixel_scales
 
 def extract_image_metadata(header):
     """Return a dictionary of metadata pulled from a fits header."""
@@ -9,7 +10,7 @@ def extract_image_metadata(header):
     metadata['mjd_obs'] = None # recommended
     metadata['naxes'] = wcs.naxis
     metadata['naxis'] = (header['NAXIS1'], header['NAXIS2'])
-    metadata['scale'] = None # required
+    metadata['scale'] = proj_plane_pixel_scales(wcs)
     metadata['format'] = 'image/fits'
     metadata['crpix'] = wcs.wcs.crpix
     metadata['crval'] = wcs.wcs.crval
