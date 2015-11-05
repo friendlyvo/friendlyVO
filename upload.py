@@ -23,9 +23,9 @@ class NewForm(Form):
 def new():
     form = NewForm()
     if form.validate_on_submit():
-        url_list = form.url_list.data.split('\n')
+        url_list = form.url_list.data.replace('\r', '').split('\n')
         # Strip \r and the last empty item. Terrible coding here.
-        url_list = [url[:-1] for url in url_list[:-1]]
+        # url_list = [url[:-1] for url in url_list[:-1]]
         result_list = []
         for url in url_list:
             header = get_remote_header(url)
