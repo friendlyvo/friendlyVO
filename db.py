@@ -18,10 +18,11 @@ def add_image(img_metadata):
     """
 
     try:
+        dtype = ImageMetadata.COMPULSORY_KEYS_TYPES + ImageMetadata.OTHER_KEYS_TYPES
         if not os.path.exists(CSV_PATH):
-            table = Table(dtype=ImageMetadata.COMPULSORY_KEYS_TYPES + ImageMetadata.OTHER_KEYS_TYPES, names=ImageMetadata.COMPULSORY_KEYS + ImageMetadata.OTHER_KEYS)
+            table = Table(dtype=dtype, names=ImageMetadata.COMPULSORY_KEYS + ImageMetadata.OTHER_KEYS)
         else:
-            table = ascii.read(CSV_PATH, format='csv')
+            table = Table(ascii.read(CSV_PATH, format='csv'), dtype=dtype)
 
         table.add_row(img_metadata.as_array())
 

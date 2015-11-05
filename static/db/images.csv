@@ -1,3 +1,5 @@
 title,ra_center,dec_center,naxes,naxis,scale,format,image_url,instrument,description,mjd,reference_frame,projection,crpix,crval,cd_matrix,preview_url,fov_s,pub_ref,author
-test,11.2,-34.81,2,"[500, 500]","[0.1 0.1]",image/fits,http://myserver/myimages/M1.fits,None,None,None,None,None,None,None,None,None,None,None,None
-test,11.2,-34.81,2,"[500, 500]","[0.1 0.1]",image/fits,http://myserver/myimages/M1.fits,None,None,None,None,None,None,None,None,None,None,None,None
+test,11.2,-34.81,2,[500 500],[0.1 0.1],image/fits,http://myserver/myimages/M1.fits,None,None,None,None,None,None,None,None,None,None,None,None
+test,11.2,-34.81,2,[500 500],[0.1 0.1],image/fits,http://myserver/myimages/M1.fits,None,None,None,None,None,None,None,None,None,None,None,None
+None,173.76857259434138,0.31433071335335605,2,[2048 1489],[0.000110060664444 0.000109987028419],image/fits,http://das.sdss.org/www/cgi-bin/drC?RUN=756&RERUN=44&CAMCOL=4&FIELD=387&FILTER=u,None,None,None,ICRS,None,[1024.5 744.5],[173.7685176 0.31433072],[9.16978388251e-09 0.000109987027615 0.000110060664063 -1.32930107527e-08],None,None,None,None
+None,173.99983302247006,10.343618375660517,2,[2048 1489],[0.000109969498463 0.000110009219763],image/fits,http://das.sdss.org/www/cgi-bin/drC?RUN=3031&RERUN=40&CAMCOL=5&FIELD=359&FILTER=u,None,None,None,ICRS,None,[1024.5 744.5],[173.99977714 10.34361655],[-3.6217176893e-06 0.000109948607165 0.00010990984375 3.65133064516e-06],None,None,None,None

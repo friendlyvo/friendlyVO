@@ -16,13 +16,15 @@ def extract_image_metadata(header, title=None, image_url=None):
         naxis='[{} {}]'.format(header['NAXIS1'], header['NAXIS2']),
         scale='[{} {}]'.format(*proj_plane_pixel_scales(wcs)),
         format='image/fits',
-        image_url=image_url,        
+        image_url=image_url,
+        crpix='[{} {}]'.format(*wcs.wcs.crpix),
+        crval='[{} {}]'.format(*wcs.wcs.crval),
+        cd_matrix='[{} {} {} {}]'.format(
+            wcs.wcs.cd[0, 0], wcs.wcs.cd[0, 1],
+            wcs.wcs.cd[1, 0], wcs.wcs.cd[1, 1]),
+        reference_frame=wcs.wcs.radesys,
         )
     # metadata['inst'] = None # recommended
     # metadata['mjd_obs'] = None # recommended
-    # metadata['crpix'] = wcs.wcs.crpix
-    # metadata['crval'] = wcs.wcs.crval
-    # metadata['cd'] = wcs.wcs.cd
-    # metadata['ref_frame'] = wcs.wcs.radesys
     # metadata['equinox'] = wcs.wcs.equinox
     return metadata
