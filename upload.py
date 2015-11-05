@@ -28,7 +28,10 @@ def new():
         # url_list = [url[:-1] for url in url_list[:-1]]
         result_list = []
         for url in url_list:
-            header = get_remote_header(url)
+            try:
+                header = get_remote_header(url)
+            except requests.exceptions.MissingSchema:
+                continue
             if not header:
                 continue
             metadata = extract_image_metadata(header, image_url=url)
