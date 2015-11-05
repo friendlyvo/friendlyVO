@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request
+from flask import Flask, request, Markup
 from flask import render_template
 
 from query import query
