@@ -5,7 +5,12 @@ from utils import ImageMetadata
 
 def extract_image_metadata(header, title=None, image_url=None):
     """Return a dictionary of metadata pulled from a fits header."""
-    wcs = WCS(header)
+    try:
+        wcs = WCS(header)
+    except ValueError:
+        raise ScrapeException('No WCS found in header')
+    if not hasattr(wcs.wcs, 'cd'):
+        raise ScrapeException('Insufficient WCS data in header')
     center = 0.5*(header['NAXIS1'] - 1), 0.5*(header['NAXIS2'] - 1)
     center_wcs = wcs.wcs_pix2world([center[0]], [center[1]], 0)
     corners_x = (0, 0, header['NAXIS1']-1, header['NAXIS1']-1)
@@ -35,3 +40,6 @@ def extract_image_metadata(header, title=None, image_url=None):
     # metadata['mjd_obs'] = None # recommended
     # metadata['equinox'] = wcs.wcs.equinox
     return metadata
+
+class ScrapeException(Exception):
+    pass
